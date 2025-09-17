@@ -39,14 +39,16 @@ class PageController extends Controller
             ],
 
             // Experience data: structured as an array of associative arrays
-            'experience' => [
+            'experiences' => [
                 [
                     'profession' => 'Mechanic helper',
-                    'date' => '2021-2023',
+                    'company' => 'Moys Garage',
+                    'duration' => '2021-2023',
                 ],
                 [
                     'profession' => 'NC1 Welder',
-                    'date' => '2023-2024',
+                    'company' => 'Tesda Navotas',
+                    'duration' => '2023-2024',
                 ]
             ],
 

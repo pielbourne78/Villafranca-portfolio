@@ -1,23 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $portfolio['name'] }}'s Portfolio</title>
+@extends('layouts.portfolio')
 
-    <link rel="stylesheet" href="{{ asset('css/portfolio.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-   
-</head>
-<body>
+@section('content')
+<div class="container mt-5">
     <header>
-        <img src="{{ $portfolio['profile_image'] }}" alt="{{ $portfolio['name'] }}">
+        <img src="{{ asset($portfolio['profile_image']) }}" alt="{{ $portfolio['name'] }}" class="profile-img">
         <h1>{{ $portfolio['name'] }}</h1>
         <p>{{ $portfolio['title'] }}</p>
         <p>{{ $portfolio['bio'] }}</p>
         <p>Location: {{ $portfolio['location'] }}</p>
     </header>
-
+    
     <section>
         <h2>Skills</h2>
         <ul>
@@ -28,15 +20,40 @@
     </section>
 
     <section>
-        <h2>Projects</h2>
-        @foreach ($portfolio['projects'] as $project)
-            <div class="project">
-                <h3>{{ $project['name'] }}</h3>
-                <p>{{ $project['description'] }}</p>
-                <a href="{{ $project['demo_url'] }}">View Project</a>
+        <h2>Experience</h2>
+       @foreach ($portfolio['experiences'] as $experience)
+            <div class="experience">
+                <h3>{{ $experience['profession'] }} at {{ $experience['company'] }}</h3>
+                <p>{{ $experience['duration'] }}</p>
             </div>
         @endforeach
     </section>
+
+        <section>
+        <h2>Education</h2>
+        @foreach ($portfolio['education'] as $education)
+            <div class="education">
+                <h3>{{ $education['school'] }}</h3>
+                <p>{{ $education['date'] }}</p>
+            </div>
+        @endforeach
+    </section>
+
+    <section>
+    <h2>Projects</h2>
+    @foreach ($portfolio['projects'] as $project)
+        <div class="project">
+            <h3>{{ $project['name'] }}</h3>
+            <img src="{{ asset($project['image']) }}" alt="{{ $project['name'] }}" style="max-width: 200px; height: auto; margin-bottom: 10px;">
+            <p>{{ $project['description'] }}</p>
+            <a href="{{ $project['demo_url'] }}" target="_blank">View Demo</a>
+            @if(isset($project['github_url']))
+                | <a href="{{ $project['github_url'] }}" target="_blank">View on GitHub</a>
+            @endif
+        </div>
+    @endforeach
+</section>
+
     <section>
         <h2>Contact & Social Media</h2>
         <p><i class="fas fa-envelope"></i> Email: <a href="mailto:{{ $portfolio['contacts']['email'] }}">{{ $portfolio['contacts']['email'] }}</a></p>
@@ -44,15 +61,8 @@
         <p><i class="fab fa-github"></i> GitHub: <a href="{{ $portfolio['contacts']['github'] }}">{{ $portfolio['contacts']['github'] }}</a></p>
         <p><i class="fab fa-facebook"></i> Facebook: <a href="{{ $portfolio['contacts']['facebook'] }}">{{ $portfolio['contacts']['facebook'] }}</a></p>
     </section>
-    <section>
-        <ul>
-            @foreach ($portfolio['contacts'] as $platform => $link)
-                <li><a href="{{ $link }}">{{ ucfirst($platform) }}</a></li>
-            @endforeach
-        </ul>
-    </section>
-    <footer>
+   <footer>
         <p>&copy; {{ date('Y') }} {{ $portfolio['name'] }}</p>
     </footer>
-</body>
-</html>
+</div>
+@endsection
