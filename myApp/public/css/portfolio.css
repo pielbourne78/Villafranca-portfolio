@@ -7,7 +7,7 @@
 /* General Styling */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #fff;
+    color: #ffffff;
     line-height: 1.6;
     margin: 0;
     padding: 0;
@@ -17,15 +17,21 @@ body {
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
 }
-
+/* Container */
 .container {
     max-width: 900px;
 }
+
 
 @keyframes gradientShift {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
+}
+
+/* profile image */
+.profile-img {
+    border-radius: 10px; /* Adjust this value to control the roundness */
 }
 
 /* Header Section */
@@ -60,6 +66,11 @@ header p {
     font-size: 1.2rem;
     color: #ccc;
     font-style: italic;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto; /* centers the content */
 }
 
 /* Sections */
