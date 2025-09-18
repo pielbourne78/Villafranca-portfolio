@@ -1,6 +1,9 @@
 @extends('layouts.portfolio')
 
+@section('title', 'Portfolio - ' . $portfolio['name'])
+
 @section('content')
+
 <div class="container mt-5">
     <header>
         <img src="{{ asset($portfolio['profile_image']) }}" alt="{{ $portfolio['name'] }}" class="profile-img">
