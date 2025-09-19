@@ -8,10 +8,10 @@ Route::get('/', [PageController::class, 'index']);
 
 // Portfolio routes
 
-Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio.home');
+Route::get('/portfolio', [PageController::class, 'index'])->name('portfolio.home');
 
-Route::get('/about', [PortfolioController::class, 'about'])->name('portfolio.about');
+Route::get('/about', [PageController::class, 'about'])->name('portfolio.about');
 
-Route::get('/projects', [PortfolioController::class, 'projects'])->name('portfolio.projects');
+Route::get('/projects', [PageController::class, 'projects'])->name('portfolio.projects');
 
-Route::get('/contact', [PortfolioController::class, 'contact'])->name('portfolio.contact');
+Route::get('/contact', [PageController::class, 'contact'])->name('portfolio.contact');
